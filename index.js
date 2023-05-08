@@ -1,8 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 8000;
 
-const user = [
+const users = [
     {id:1, name:'Akibul', age:45, education:'Dhaka University'},
     {id:2, name:'MokBul', age:45, education:'Dhaka University'},
     {id:3, name:'Robiul', age:45, education:'Dhaka University'},
@@ -12,18 +13,24 @@ const user = [
 
 
 
-const cors = require('cors');
+
+
+// Middleware
 
 app.use(cors())
 
 app.get('/', (req, res) => {
     res.send('I am Ready To Make Awesome Server')
-})
+});
 
-app.get('/user', ( req, res) => {
-    res.send(user)
-})
+app.get('/users', ( req, res) => {
+    res.send(users)
+});
+
+
 
 app.listen( port, () => {
-    console.log(`Our Server is running On the port: ${port}`);
-})
+    console.log(`Our Server is running On the PORT: ${port}`);
+});
+
+
